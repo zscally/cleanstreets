@@ -1,0 +1,93 @@
+<script type="text/javascript">
+    $(function () {
+        var dp = $('#datetimepicker1').datetimepicker({
+            'format': 'YYYY-MM-DD',
+            useCurrent: true
+
+        });
+
+        var dp2 = $('#datetimepicker2').datetimepicker({
+            'format': 'YYYY-MM-DD 15:00:00',
+            useCurrent: true
+        });
+
+        $("#datetimepicker1").on("dp.change", function (e) {
+            $('#datetimepicker2').data("DateTimePicker").maxDate(e.date);
+        });
+
+        $('#datetimepicker2').on('dp.change', function(e){
+            $('#datetimepicker1').data("DateTimePicker").minDate(e.date);
+        });
+
+
+        $('#type').on('change', function(type){
+            var type = $('#type').val();
+            if( type == 'Cancel' )
+            {
+                $('#date_group').hide();
+                $('#cleaning_date').val(moment().format('YYYY-MM-DD'));
+                $('#send_date').val(moment().format('YYYY-MM-DD HH:mm:00'));
+            }else {
+                $('#date_group').show();
+            }
+        });
+
+        $('#type').change();
+
+
+    });
+</script>
+<div class="row">
+    <div class="col-sm-12">
+        <div id="message"></div>
+        <form class="form" id="comments_form">
+            <div id="date_group">
+                <div class="form-group">
+                    <label>Cleaning Date</label>
+                    <div class='input-group date' id='datetimepicker1'>
+                        <input id="cleaning_date" name="cleaning_date" type='text' class="form-control" value="{% if notification_data.cleaning_date %}{{notification_data.cleaning_date}}{% endif %}" />
+                        <span class="input-group-addon">
+                            <span class="fa fa-calendar"></span>
+                        </span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Notification Send Date</label>
+                    <div class='input-group date' id='datetimepicker2'>
+                        <input id="send_date" name="send_date" type='text' class="form-control" value="{% if notification_data.send_date %}{{notification_data.send_date}}{% endif %}" />
+                        <span class="input-group-addon">
+                            <span class="fa fa-calendar"></span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Area</label>
+                <select class="form-control" id="area" name="area">
+                    <option value="">Select Area</option>
+                    {% for area in areas %}
+                        <option value="{{area}}" {% if notification_data.area == area %} SELECTED {% endif %}>{{area}}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Route</label>
+                <select class="form-control" id="route" name="route">
+                    <option value="">Select Route</option>
+                    {% for route in routes %}
+                        <option value="{{route}}" {% if notification_data.route == route %} SELECTED {% endif %}>{{route}}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Event Type</label>
+                <select class="form-control" id="type" name="type">
+                    <option value="">Select Type</option>
+                    {% for type in types %}
+                        <option value="{{type}}" {% if notification_data.type == type %} SELECTED {% endif %}>{{type}}</option>
+                    {% endfor %}
+                </select>
+            </div>
+        </form>
+    </div>
+</div>

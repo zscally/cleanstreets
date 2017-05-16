@@ -1,0 +1,43 @@
+{% include "admin/header.html" %}
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-3 col-md-2 sidebar">
+            {% include "admin/side_nav.html" %}
+        </div>
+
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+            <h1 class="page-header"><i class="fa fa-users"></i> Manage Users</h1>
+            {% include "admin/error.html" %}
+
+            <div class="row">
+                <div class="well">
+                    <button class="btn btn-success" id="createuser"><i class="fa fa-user"></i> Create User</button>
+                </div>
+
+                <div class="table-responsive well">
+                    <h2>Users</h2>
+                    <table class="table table-striped datatablesUsers">
+                        <thead>
+                            <tr>
+                                <th>First</th>
+                                <th>Last</th>
+                                <th>Email</th>
+                                <th>Role</th>
+                                <th>Created</th>
+                                <th>Active</th>
+                                <th class="no-sort">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% include "admin/footer.html" %}

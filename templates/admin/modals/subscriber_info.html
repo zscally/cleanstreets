@@ -1,0 +1,58 @@
+<script>
+
+    $(function(){
+        $('#canned_comments').on('change', function(){
+            $('.summernote').summernote('insertText', $(this).val());
+        });
+    });
+
+
+
+    $('.summernote').summernote({
+        height: 150,
+        focus: true,
+        toolbar: [
+            ['font', ['strikethrough', 'superscript', 'subscript']],
+            ['fontsize', ['fontsize']],
+            ['color', ['color']],
+            ['para', ['ul', 'ol', 'paragraph']],
+            ['height', ['height']]
+        ]
+    });
+
+    $('.dropdown-toggle').dropdown();
+</script>
+<div class="row">
+    <div class="col-sm-12 comments_container">
+    {% if subscriber.comments %}
+        {% for comment in subscriber.comments %}
+            <div id="comment_{{comment.comment_id}}">
+                <ul class="list-inline list-unstyled small">
+                    <li><i class="fa fa-user-o"></i> {{comment.first_name}} {{comment.last_name}}</li>
+                    <li><i class="fa fa-clock-o"></i> {{comment.date_created}}</li>
+                    <!--<li><a class="text-danger deleteComment" href="#" data-comment-id="{{comment.comment_id}}"><i class="fa fa-trash"></i> Delete</a></li>-->
+                </ul>
+                <div class="col-sm-12 well text-wrap">{{comment.comment | raw}}</div>
+            </div>
+        {% endfor %}
+    {% else %}
+        <p class="text-center text-capitalize">No comments</p>
+    {% endif %}
+    </div>
+
+    <div class="col-sm-12">
+        <div id="message"></div>
+        <form class="form" id="comments_form">
+            <textarea id="comment" class="summernote" name="comment" rows="5"></textarea>
+            <div class="form-group">
+                <label for="canned_comments">Standard</label>
+                <select id="canned_comments" class="form-control">
+                    <option value="">Select Canned Comments</option>
+                    {% for canned_comment in canned_comments %}
+                        <option value="{{canned_comment.text}}">{{canned_comment.title}}</option>
+                    {% endfor %}
+                </select>
+            </div>
+        </form>
+    </div>
+</div>

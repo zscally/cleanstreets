@@ -1,0 +1,75 @@
+{% include "admin/header.html" %}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-3 col-md-2 sidebar">
+            {% include "admin/side_nav.html" %}
+        </div>
+
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+            <h1 class="page-header"><i class="fa fa-wrench"></i> Utilities</h1>
+            <p class="small text-danger">If your not sure what these items do, THAN DON'T CLICK THEM. You could blow up the database...</p>
+            <div class="row well">
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        <thead>
+                        <tr>
+                            <th>Utilitie Name</th>
+                            <th>Note</th>
+                            <th>Action</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>List all Active Street Sweeper Topics (JSON PAYLOAD) Safe to Run</td>
+                                <td></td>
+                                <td>
+                                    <a href="/utilities/listtopics" onclick="javascript:return confirm('Are you sure you want to run this?')"><i class="fa fa-download"></i></a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Check Gov Delivery Table to Users in clean Streets Database</td>
+                                <td><p class="small text-danger">Warning this will update and set the found flag to 1 fairly safe to run</p></td>
+                                <td>
+                                    <a href="/utilities/checkgovdeliverytable" onclick="javascript:return confirm('Are you sure you want to run this?')"><i class="fa fa-download"></i></a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Sync Gov Delivery Users to Clean Streets Database</td>
+                                <td><p class="small text-danger">Warning this will update AlertNotification table with data stored in /sql/govd/CSV_FILES.CSV</SV_FILES></p></td>
+                                <td>
+                                    <a href="/utilities/syncgovdelivery" onclick="javascript:return confirm('Are you sure you want to run this?')"><i class="fa fa-download"></i></a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Convert X / Y Cords into Lat / Lng for Subscribers</td>
+                                <td><p class="small text-danger">Warning this will update AlertNotification table with data, safe to run</p></td>
+                                <td>
+                                    <a href="/admin/convertxy" onclick="javascript:return confirm('Are you sure you want to run this?')"><i class="fa fa-download"></i></a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>API Tester - Simple Form to test the API</td>
+                                <td><p class="small text-danger">Warning this will update AlertNotification table with data, safe to run</p></td>
+                                <td>
+                                    <a href="/utilities/testapi" onclick="javascript:return confirm('Are you sure you want to run this?')"><i class="fa fa-arrow-right"></i></a>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td><b>Rebuild Subscriber table - Rekeying them from old subscriber table!</b></td>
+                                <td><p class="small text-danger">This action to build up a new subscriber table called AlertNotification_staging</p></td>
+                                <td>
+                                    <a href="/utilities/buildlojictable" onclick="javascript:return confirm('Are you sure you want to run this?')"><i class="fa fa-arrow-right"></i></a>
+                                </td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% include "admin/footer.html" %}

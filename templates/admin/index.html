@@ -1,0 +1,35 @@
+{% include "admin/header.html" %}
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-3 col-md-2 sidebar">
+            {% include "admin/side_nav.html" %}
+        </div>
+
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+            <h1 class="page-header"><i class="fa fa-map-marker"></i> Adoption Map</h1>
+            <div class="row">
+                <div id='adoption_map'></div>
+            </div>
+            <div class="row">
+                <h2 class="sub-header"><i class="fa fa-line-chart"></i> Stats</h2>
+                <div class="col-sm-12">
+                    <h3>Signups over 31 days</h3>
+                    <div class="row">
+                        <form class="form-inline">
+                            <div class="form-group">
+                                <label>Select date</label>
+                                <input id="31daysdate" class="form-control" type="text" placeholder="yyyy-mm-dd">
+                                <div class="clearfix"></div>
+                            </div>
+                        </form>
+                    </div>
+                    <div id="over31days"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% include "admin/footer.html" %}

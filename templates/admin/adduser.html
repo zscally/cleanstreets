@@ -1,0 +1,56 @@
+{% include "admin/header.html" %}
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-3 col-md-2 sidebar">
+            {% include "admin/side_nav.html" %}
+        </div>
+
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+            <h1 class="page-header"><i class="fa fa-user"></i> Add New User</h1>
+            {% include "admin/error.html" %}
+
+            <div class="row well">
+                <form name="adduser" class="form" method="post" action="/admin/adduser">
+                    <input type="hidden" name="pwlength" value="10">
+                    <div class="form-group">
+                        <label for="first_name">First Name</label>
+                        <input id="first_name" class="form-control" type="text" name="first_name" value="" placeholder="Persons First Name">
+                    </div>
+                    <div class="form-group">
+                        <label for="last_name">Last Name</label>
+                        <input id="last_name" class="form-control" type="text" name="last_name" value="" placeholder="Persons Last Name">
+
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Login / Email</label>
+                        <input id="email" class="form-control" type="email" name="email" value="" placeholder="someone@somewhere.com">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">User Role</label>
+                        <select id="role" class="form-control" name="role">
+                            <option value="2">Member</option>
+                            <option value="3">Admin</option>
+                            <option value="1">Super Admin</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <div class="input-group">
+                            <input id="password" class="form-control" type="text" name="password" value="">
+                            <div class="input-group-addon" onClick="generate();">
+                                <i class="fa fa-refresh fa-spin"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <input class="btn btn-primary" class="form-control" type="submit" value="Add User">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% include "admin/footer.html" %}

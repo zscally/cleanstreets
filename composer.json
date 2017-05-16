@@ -1,0 +1,38 @@
+{
+    "name":"zscally/StreetSweeper",
+    "type":"framework",
+    "description":"MICRO MVC API Built on top of Slim micro framework",
+    "keywords":["microframework", "rest", "router", "mvc"],
+    "homepage":"http://zachscally.com",
+    "license":"MIT",
+    "authors":[
+        {
+            "name":"Zachary Scally"
+        }
+    ],
+    "require":{
+        "php":">=5.3.0",
+        "slim/slim":"^3.0",
+        "slim/pdo": "^1.9",
+        "twig/twig":"1.*",
+        "slim/twig-view": "^2.0",
+        "zircote/swagger-php": "^2.0",
+        "govdelivery/tms-client": "^0.2.0",
+        "slim/http-cache": "^0.3.0",
+        "pear/http_request2": "^2.3",
+        "bryanjhv/slim-session": "^3.0",
+        "proj4php/proj4php": "^2.0",
+        "goodby/csv": "^1.3",
+        "sabre/xml": "^2.0",
+        "guzzlehttp/guzzle": "^6.2",
+        "curl/curl": "^1.6"
+    },
+    "autoload":{
+        "psr-0": {
+            "HTTP_Request2" : "",
+            "lib": "",
+            "models": "",
+            "routes": ""
+        }
+    }
+}
